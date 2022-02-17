@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:  Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +12,39 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding:0
 }
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.outerWrapper {
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width:70vw;
+  height:50vh;
+  
+}
+
+.innerWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height:100%
+}
+
+.secondRow {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.thirdRow {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
