@@ -5,7 +5,18 @@ import { apiKey } from '../utils/apiKey'
 
 
 function HomePage() {
-  const [pos, setPos] = useState (null)
+  let pos = null
+  const [weatherData, setWeatherData] = useState ({
+    current: {
+      temp:0,
+      humidity:0,
+      weather:[
+        {
+          id:800
+        }
+      ]
+    }
+  })
 
 
 
@@ -14,16 +25,21 @@ function HomePage() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition)
         function setPosition (pos) {
-          setPos (pos)
+          fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
+          .then ((response) => {
+            response.json().then ((data) =>  {
+              setWeatherData(data)
+              console.log (data)
+            })
+          })
+          .catch ((error) => console.log (error))
         }
       }
-      if (pos !== null) {
-        fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
-        .then ((response) => {
-          response.json().then ((data) => console.log (data))
-        })
-        .catch ((error) => console.log (error))
+      else {
+        console.log ("Cannot get geolocation")
       }
+      
+
     }
     getWeatherData()
 
@@ -32,7 +48,7 @@ function HomePage() {
 
   return (
     <>
-      <Weather />
+      <Weather weatherData={weatherData} />
     </>
   )
 }
