@@ -1,22 +1,37 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import Weather from "../components/Weather"
-import { getWeatherData } from '../utils/openWeatherHandler'
+import { apiKey } from '../utils/apiKey'
+
+
 
 function HomePage() {
+  const [pos, setPos] = useState (null)
+
+
+
   useEffect(() => {
-    function updateWeather() {
-      getWeatherData()
-      .then ((result) => console.log (result))
-      .catch ((error) => console.log (error))
+    function getWeatherData() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(setPosition)
+        function setPosition (pos) {
+          setPos (pos)
+        }
+      }
+      if (pos !== null) {
+        fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
+        .then ((response) => {
+          response.json().then ((data) => console.log (data))
+        })
+        .catch ((error) => console.log (error))
+      }
     }
-    updateWeather()
+    getWeatherData()
 
   }, [])
   
 
   return (
     <>
-      <h1>Arequipa Weather</h1>
       <Weather />
     </>
   )
