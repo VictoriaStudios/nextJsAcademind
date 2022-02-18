@@ -135,8 +135,9 @@ function Weather(props) {
               <h3>{data.current.humidity}% humidity</h3>
               <h3>{idToWeatherString(data.current.weather[0].id)}</h3>
             </div>
-            <div className="secondRow">Second Row</div>
-            <div className="thirdRow">Third Row</div>
+            <div className="secondRow">
+              <h3>{props.locationData.locality}, {props.locationData.countryName}</h3>
+              </div>
 
           </div>
         </div>

@@ -18,6 +18,10 @@ function HomePage() {
     }
   })
 
+  const [locationData, setLocationData] = useState ({
+    locality: "Washington"
+  })
+
 
 
   useEffect(() => {
@@ -29,14 +33,27 @@ function HomePage() {
           .then ((response) => {
             response.json().then ((data) =>  {
               setWeatherData(data)
-              console.log (data)
             })
           })
+          .catch ((error) => console.log (error))
+          getCityName (pos)
           .catch ((error) => console.log (error))
         }
       }
       else {
         console.log ("Cannot get geolocation")
+      }
+
+      function getCityName (pos) {
+        return new Promise ((resolve, reject) => {
+          fetch (`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&localityLanguage=en`)
+          .then ((response) => {
+            response.json().then ((data) =>  {
+              setLocationData(data)
+            })
+          })
+          .catch ((error) => reject (error))
+        })
       }
       
 
@@ -48,7 +65,7 @@ function HomePage() {
 
   return (
     <>
-      <Weather weatherData={weatherData} />
+      <Weather weatherData={weatherData} locationData={locationData} />
     </>
   )
 }
