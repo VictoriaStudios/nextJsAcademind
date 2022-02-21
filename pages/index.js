@@ -66,6 +66,7 @@ function HomePage() {
 
 
   useEffect(() => {
+    console.log (weatherData.daily)
     function getWeatherData() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition)
@@ -73,9 +74,7 @@ function HomePage() {
           fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
           .then ((response) => {
             response.json().then ((data) =>  {
-              // console.log (data.daily[0])
-              // console.log (data.daily[1])
-              // console.log (data.daily[2])
+              if (data.daily.length > 3) data.daily.length=3
               setWeatherData(data)
             })
           })

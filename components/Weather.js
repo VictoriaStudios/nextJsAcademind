@@ -4,6 +4,7 @@ import WeatherSymbol from './WeatherSymbol'
 
 function Weather(props) {
   const data = props.weatherData
+  console.log(data.daily[0])
   function toCelsius(kelvin) {
     return parseInt(kelvin - 273.15)
   }
@@ -140,9 +141,9 @@ function Weather(props) {
               <h3>{props.locationData.locality}, {props.locationData.countryName}</h3>
             </div>
             <div className="thirdRow">
-                {/* <div className="forecastContainer"><Forecast dayWeather={data.daily[0]}/></div>
-                <div className="forecastContainer"><Forecast dayWeather={data.daily[1]}/></div>
-                <div className="forecastContainer"><Forecast dayWeather={data.daily[2]}/></div> */}
+                {data.daily.map ((entry, index) => (
+                <div className="forecastContainer"><Forecast dayWeather={entry}/></div>
+                ))}
             </div>
           </div>
         </div>

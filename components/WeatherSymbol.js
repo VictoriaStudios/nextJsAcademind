@@ -2,8 +2,8 @@ import Image from "next/image"
 
 
 function WeatherSymbol(props) {
-  const id = props.dayWeather.weather[0].id
   const data = props.dayWeather
+  const id = data.weather[0].id
   let nightTime = false
    if (data.dt > data.sunset) nightTime= true
   let imgWidth = "256"

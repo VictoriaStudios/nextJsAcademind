@@ -1,10 +1,10 @@
 import WeatherSymbol from "./WeatherSymbol"
 
 function Forecast(props) {
-    const data = props.weatherData
+    const data = props.dayWeather
     return (
         <>
-            <WeatherSymbol weatherData={data}/>
+            <WeatherSymbol dayWeather={data}/>
         </>
 
     )
