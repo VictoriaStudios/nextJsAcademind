@@ -8,18 +8,59 @@ function HomePage() {
   let pos = null
   const [weatherData, setWeatherData] = useState ({
     current: {
-      temp:0,
+      sunrise:0,
+      dt:1,
+      sunset:2,
+      temp:290,
       humidity:0,
       weather:[
         {
           id:800
         }
       ]
-    }
+    },
+    daily: [{
+      sunrise:0,
+      dt:1,
+      sunset:2,
+      temp:290,
+      humidity:0,
+      weather:[
+        {
+          id:800
+        }
+      ]
+    },
+    {
+      sunrise:0,
+      dt:1,
+      sunset:2,
+      temp:290,
+      humidity:0,
+      weather:[
+        {
+          id:800
+        }
+      ]
+    },
+    {
+      sunrise:0,
+      dt:1,
+      sunset:2,
+      temp:290,
+      humidity:0,
+      weather:[
+        {
+          id:800
+        }
+      ]
+    },],
+    nightTime : false,
   })
 
   const [locationData, setLocationData] = useState ({
-    locality: "Washington"
+    locality: "Washington",
+    countryName: "USA",
   })
 
 
@@ -32,6 +73,9 @@ function HomePage() {
           fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
           .then ((response) => {
             response.json().then ((data) =>  {
+              // console.log (data.daily[0])
+              // console.log (data.daily[1])
+              // console.log (data.daily[2])
               setWeatherData(data)
             })
           })

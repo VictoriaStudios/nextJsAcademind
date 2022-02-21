@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  /* get better font */
   font-family:  Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color:rgba(0, 0, 0, 0.9);
   color:ghostwhite;
@@ -46,5 +47,12 @@ h1 {
 .thirdRow {
   grid-column-start: 1;
   grid-column-end: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
+
+.forecastContainer {
+  text-align: center;
+}
+
 

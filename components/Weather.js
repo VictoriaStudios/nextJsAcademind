@@ -1,4 +1,5 @@
 import React from 'react'
+import Forecast from './Forecast'
 import WeatherSymbol from './WeatherSymbol'
 
 function Weather(props) {
@@ -128,7 +129,7 @@ function Weather(props) {
         <div className="outerWrapper">
           <div className="innerWrapper">
             <div className="weatherSymbol">
-              <WeatherSymbol weatherData= {data} />
+              <WeatherSymbol dayWeather={data.current} />
             </div>
             <div className="basicInfos">
               <h3>{toCelsius(data.current.temp)}°C</h3>
@@ -137,8 +138,12 @@ function Weather(props) {
             </div>
             <div className="secondRow">
               <h3>{props.locationData.locality}, {props.locationData.countryName}</h3>
-              </div>
-
+            </div>
+            <div className="thirdRow">
+                {/* <div className="forecastContainer"><Forecast dayWeather={data.daily[0]}/></div>
+                <div className="forecastContainer"><Forecast dayWeather={data.daily[1]}/></div>
+                <div className="forecastContainer"><Forecast dayWeather={data.daily[2]}/></div> */}
+            </div>
           </div>
         </div>
       </section>
