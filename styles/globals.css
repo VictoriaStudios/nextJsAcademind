@@ -5,10 +5,9 @@ body {
   margin: 0;
   /* get better font */
   font-family:  Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: linear-gradient(45deg,#03045E 20%, #062f88 50% ,#0094d8);
+  background: linear-gradient(45deg,#03045E 20%, #062f88 50% ,#0280bb);
   width: 100vw;
   height: 100vh;
-  
 }
 
 a {
@@ -25,25 +24,30 @@ h1 {
 
 }
 
+
 .outerWrapper {
   position:absolute;
   left: 50%;
-  top: 10%;
-  transform: translate(-50%,-20%);
-  width:50vw;
-  height:50vh;
-  color:#90E0EF;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width:60vw;
+  height:80vh;
+  color:#a8eefa;
   background: linear-gradient(rgba(245, 245, 245, 0.205), rgba(255, 255, 255, 0.315));
   border-radius: 5%;
 }
 
 
+
 .innerWrapper {
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  max-height:100%;
-  max-width: 100%;
-
+  height:100%;
+  width: 100%;
 }
 
 .secondRow {
@@ -64,5 +68,23 @@ h1 {
 }
 
 .weatherSymbol {
-  max-height: 100%;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  top:10%;
+}
+
+.basicInfos {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+
+}
+
+.gap {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
