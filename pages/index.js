@@ -6,10 +6,11 @@ import { apiKey } from '../utils/apiKey'
 
 function HomePage() {
   let pos = null
+  const now = Date.now()
   const [weatherData, setWeatherData] = useState ({
     current: {
       sunrise:0,
-      dt:1,
+      dt:now,
       sunset:2,
       temp:290,
       humidity:0,
@@ -21,9 +22,11 @@ function HomePage() {
     },
     daily: [{
       sunrise:0,
-      dt:1,
+      dt:now,
       sunset:2,
-      temp:290,
+      temp:{
+        day:290
+      },
       humidity:0,
       weather:[
         {
@@ -33,9 +36,11 @@ function HomePage() {
     },
     {
       sunrise:0,
-      dt:1,
+      dt:now,
       sunset:2,
-      temp:290,
+      temp:{
+        day:290
+      },
       humidity:0,
       weather:[
         {
@@ -45,9 +50,11 @@ function HomePage() {
     },
     {
       sunrise:0,
-      dt:1,
+      dt:now,
       sunset:2,
-      temp:290,
+      temp:{
+        day:290
+      },
       humidity:0,
       weather:[
         {
@@ -66,7 +73,6 @@ function HomePage() {
 
 
   useEffect(() => {
-    console.log (weatherData.daily)
     function getWeatherData() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition)

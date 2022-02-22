@@ -26,7 +26,7 @@ h1 {
 .outerWrapper {
   position:absolute;
   left: 50%;
-  top: 20%;
+  top: 10%;
   transform: translate(-50%,-20%);
   width:50vw;
   height:50vh;
@@ -54,5 +54,4 @@ h1 {
 .forecastContainer {
   text-align: center;
 }
-
 
