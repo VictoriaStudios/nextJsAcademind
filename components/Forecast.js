@@ -10,7 +10,7 @@ function Forecast(props) {
     const now = Date.now()
     useEffect(() => {
         console.log(
-            `Now: ${now}, dt:${data.dt}, distance: ${formatDistance(now, data.dt*1000)}`
+            `Now: ${now}, dt:${data.dt}, distance: ${formatDistance(data.dt * 1000, now, { addSuffix: true })}`
         )
     })
 
@@ -19,8 +19,14 @@ function Forecast(props) {
     return (
         <>
             <div>
+                {props.index === 0 ? (
+                    <div>Tomorrow</div>
+                ) : (
+                    <div>{formatDistance(data.dt * 1000, now, { addSuffix: true })}</div>
+                )}
+
                 <div>{(useToCelsius(data.temp.day))}°C / {data.humidity}%</div>
-                <WeatherSymbol dayWeather={data} className="forecastSymbol" />
+                <WeatherSymbol dayWeather={data} imgWidth={props.imgWidth} imgHeight={props.imgHeight} className="forecastSymbol" />
                 <div>{useIdToWeatherString(data.weather[0].id)} </div>
             </div>
         </>

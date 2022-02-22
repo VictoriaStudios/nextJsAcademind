@@ -61,6 +61,20 @@ function HomePage() {
           id:800
         }
       ]
+    },
+    {
+      sunrise:0,
+      dt:now,
+      sunset:2,
+      temp:{
+        day:290
+      },
+      humidity:0,
+      weather:[
+        {
+          id:800
+        }
+      ]
     },],
     nightTime : false,
   })
@@ -80,7 +94,7 @@ function HomePage() {
           fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
           .then ((response) => {
             response.json().then ((data) =>  {
-              if (data.daily.length > 3) data.daily.length=3
+              //if (data.daily.length > 3) data.daily.length=3
               setWeatherData(data)
             })
           })

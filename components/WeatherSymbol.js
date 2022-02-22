@@ -6,8 +6,8 @@ function WeatherSymbol(props) {
   const id = data.weather[0].id
   let nightTime = false
    if (data.dt > data.sunset) nightTime= true
-  let imgWidth = "256"
-  let imgHeight = "256"
+  let imgWidth = 256
+  let imgHeight = 256
   if (props.imgWidth !== undefined ) imgWidth = props.imgWidth
   if (props.imgHeight !== undefined ) imgHeight = props.imgHeight
   let imgSrc = "/weather-01.png"
