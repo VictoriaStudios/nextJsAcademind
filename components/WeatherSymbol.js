@@ -15,8 +15,9 @@ function WeatherSymbol(props) {
   else if (id >= 300 && id < 500) imgSrc = "/weather-04.png"
   else if (id >= 500 && id < 600) imgSrc = "/weather-06.png"
   else if (id >= 600 && id < 700) imgSrc = "/weather-08.png"
-  //find an icon for haze and tornado
-  else if (id >= 700 && id < 800) imgSrc = "/weather-08.png"
+  //insert haze icon here
+  else if (id >= 700 && id < 781) imgSrc = "/weather-fog.png"
+  else if (id === 781) imgSrc="/weather-tornado.png"
   else if (id === 800) {
     if (nightTime === false) imgSrc = "/weather-01.png"
     else  imgSrc = "/weather-01-n.png"

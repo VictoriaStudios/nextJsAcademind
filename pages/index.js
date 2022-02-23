@@ -16,7 +16,7 @@ function HomePage() {
       humidity:0,
       weather:[
         {
-          id:800
+          id:701
         }
       ]
     },
@@ -44,7 +44,7 @@ function HomePage() {
       humidity:0,
       weather:[
         {
-          id:800
+          id:502
         }
       ]
     },
@@ -58,7 +58,7 @@ function HomePage() {
       humidity:0,
       weather:[
         {
-          id:800
+          id:601
         }
       ]
     },
