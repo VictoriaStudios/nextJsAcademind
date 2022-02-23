@@ -22,7 +22,7 @@ function HomePage() {
     },
     daily: [{
       sunrise:0,
-      dt:now,
+      dt:now/1000,
       sunset:2,
       temp:{
         day:290
@@ -36,7 +36,7 @@ function HomePage() {
     },
     {
       sunrise:0,
-      dt:now,
+      dt:now/1000,
       sunset:2,
       temp:{
         day:290
@@ -50,7 +50,7 @@ function HomePage() {
     },
     {
       sunrise:0,
-      dt:now,
+      dt:now/1000,
       sunset:2,
       temp:{
         day:290
@@ -64,7 +64,7 @@ function HomePage() {
     },
     {
       sunrise:0,
-      dt:now,
+      dt:now/1000,
       sunset:2,
       temp:{
         day:290

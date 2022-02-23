@@ -18,7 +18,7 @@ function Forecast(props) {
 
     return (
         <>
-            <div>
+            <div style={{height:"100%"}}>
                 {props.index === 0 ? (
                     <div>Tomorrow</div>
                 ) : (

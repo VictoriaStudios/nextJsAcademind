@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html,
 body {
   
   padding: 0;
   margin: 0;
-  /* get better font */
+  /* Import Roboto!!!! */
   font-family:  Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: linear-gradient(45deg,#03045E 20%, #062f88 50% ,#0280bb);
   width: 100vw;
@@ -24,6 +26,14 @@ h1 {
 
 }
 
+h3{
+  font-size: 1.5rem;
+}
+
+div{
+  font-size: 1rem;
+}
+
 
 .outerWrapper {
   position:absolute;
@@ -33,7 +43,7 @@ h1 {
   width:60vw;
   height:80vh;
   color:#a8eefa;
-  background: linear-gradient(rgba(245, 245, 245, 0.205), rgba(255, 255, 255, 0.315));
+  background: linear-gradient(45deg,rgba(245, 245, 245, 0.2) 5%, rgba(245, 245, 245, 0.15), 15%, rgba(245, 245, 245, 0.25), 70%,rgba(245, 245, 245, 0.08), 90%, rgba(245, 245, 245, 0.15) );
   border-radius: 5%;
 }
 
@@ -87,4 +97,24 @@ h1 {
   grid-column-end: 3;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 530px) {
+  h3{
+    font-size: 1rem;
+  }
+  
+  div{
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  h3{
+    font-size: 0.75rem;
+  }
+  
+  div{
+    font-size: 0.5rem;
+  }
 }
