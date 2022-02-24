@@ -5,6 +5,7 @@ import { apiKey } from '../utils/apiKey'
 
 
 function HomePage() {
+  
   let pos = null
   const now = Date.now()
   const [weatherData, setWeatherData] = useState ({
@@ -78,6 +79,8 @@ function HomePage() {
     },],
     nightTime : false,
   })
+  const [landscape, setLandscape] =  useState(false)
+  const [height400, setHeight400] = useState (false)
 
   const [locationData, setLocationData] = useState ({
     locality: "Washington",
@@ -87,6 +90,14 @@ function HomePage() {
 
 
   useEffect(() => {
+
+    const landscapeHandler = e => {
+      console.log ("Change in landscape")
+      setLandscape({matches: e.matches});
+    }
+    
+    const heightHandler = e => setHeight400({matches: e.matches});
+
     function getWeatherData() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition)
@@ -113,6 +124,7 @@ function HomePage() {
           .then ((response) => {
             response.json().then ((data) =>  {
               setLocationData(data)
+              resolve()
             })
           })
           .catch ((error) => reject (error))
@@ -122,13 +134,19 @@ function HomePage() {
 
     }
     getWeatherData()
+    window.matchMedia("((orientation:landscape)").addEventListener('change', landscapeHandler);
+    window.matchMedia("(min-height:400px)").addEventListener('change', heightHandler);
 
+    return () => {
+      window.removeEventListener('change', landscapeHandler);
+      window.removeEventListener('change', heightHandler);
+    }
   }, [])
   
 
   return (
     <>
-      <Weather weatherData={weatherData} locationData={locationData} />
+      <Weather weatherData={weatherData} locationData={locationData} landscape={landscape} height400={height400}/>
     </>
   )
 }

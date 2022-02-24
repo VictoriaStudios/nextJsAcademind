@@ -13,7 +13,17 @@ function Weather(props) {
         <div className="outerWrapper">
           <div className="innerWrapper">
             <div className="weatherSymbol" >
+              {!props.landscape ? (
               <WeatherSymbol dayWeather={data.current} imgWidth={164} imgHeight={164}/>
+              ): (
+                props.height400 ? (
+                  <WeatherSymbol dayWeather={data.current} imgWidth={144} imgHeight={144}/>
+                ): (
+                  <WeatherSymbol dayWeather={data.current} imgWidth={128} imgHeight={128}/>
+                )
+
+             
+              )}
              
             </div>
             <div className="basicInfos">
@@ -22,8 +32,7 @@ function Weather(props) {
               <h3>{useIdToWeatherString(data.current.weather[0].id)}</h3>
             </div>
             <div className='secondRow'>
-            <h3>{props.locationData.locality},</h3>
-            <h3> {props.locationData.countryName}</h3>
+            <h3>{props.locationData.locality}, {props.locationData.countryName}</h3>
             </div>
             <div className="gap"/>
             <div className="thirdRow">

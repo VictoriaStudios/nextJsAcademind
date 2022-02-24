@@ -38,6 +38,7 @@ function WeatherSymbol(props) {
         alt="Sun Icon"
         width={imgWidth}
         height={imgHeight}
+        layout="fixed"
         />
     </>
   )

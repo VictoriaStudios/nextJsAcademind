@@ -1,5 +1,4 @@
 import { formatDistance } from "date-fns"
-import { useEffect } from "react"
 import useIdToWeatherString from "../utils/useIdToWeatherString"
 import useToCelsius from "../utils/useToCelsius"
 import WeatherSymbol from "./WeatherSymbol"
@@ -8,11 +7,7 @@ import WeatherSymbol from "./WeatherSymbol"
 function Forecast(props) {
     const data = props.dayWeather
     const now = Date.now()
-    useEffect(() => {
-        console.log(
-            `Now: ${now}, dt:${data.dt}, distance: ${formatDistance(data.dt * 1000, now, { addSuffix: true })}`
-        )
-    })
+
 
 
 
