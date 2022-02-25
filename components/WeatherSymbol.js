@@ -39,6 +39,7 @@ function WeatherSymbol(props) {
         width={imgWidth}
         height={imgHeight}
         layout="fixed"
+        priority="false"
         />
     </>
   )

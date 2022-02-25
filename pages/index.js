@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import Weather from "../components/Weather"
 import { apiKey } from '../utils/apiKey'
+import Head from 'next/head'
 
 
 
@@ -148,6 +149,11 @@ function HomePage() {
 
   return (
     <>
+    <Head>
+        <meta charset ="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Geo Weather Page</title>
+    </Head>
       <Weather weatherData={weatherData} locationData={locationData} landscape={landscape} height400={height400}/>
     </>
   )
