@@ -91,12 +91,9 @@ function HomePage() {
 
   useEffect(() => {
 
-    const landscapeHandler = e => {
-      console.log ("Change in landscape")
-      setLandscape({matches: e.matches});
-    }
+    const landscapeHandler = e =>  setLandscape(e.matches);
     
-    const heightHandler = e => setHeight400({matches: e.matches});
+    const heightHandler = e => setHeight400(e.matches);
 
     function getWeatherData() {
       if (navigator.geolocation) {
@@ -105,7 +102,6 @@ function HomePage() {
           fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
           .then ((response) => {
             response.json().then ((data) =>  {
-              //if (data.daily.length > 3) data.daily.length=3
               setWeatherData(data)
             })
           })
@@ -131,16 +127,22 @@ function HomePage() {
         })
       }
       
+      setLandscape(window.matchMedia("(orientation:landscape)").matches)
+      setHeight400(window.matchMedia("(min-height:400px)").matches)
 
     }
     getWeatherData()
-    window.matchMedia("((orientation:landscape)").addEventListener('change', landscapeHandler);
-    window.matchMedia("(min-height:400px)").addEventListener('change', heightHandler);
+    if (typeof window !== "undefined") {
+      window.matchMedia("((orientation:landscape)").addEventListener('change', landscapeHandler);
+      window.matchMedia("(min-height:400px)").addEventListener('change', heightHandler);
+    }
+    
 
     return () => {
+      if (typeof window !== "undefined") {
       window.removeEventListener('change', landscapeHandler);
       window.removeEventListener('change', heightHandler);
-    }
+    }}
   }, [])
   
 
