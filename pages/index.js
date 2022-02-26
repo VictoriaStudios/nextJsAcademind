@@ -158,15 +158,15 @@ function HomePage(props) {
     </>
   )
 
-  export async function getStaticProps() {
-    const key = process.env.OPENWEATHER_API_KEY
-    return {
-      props: {
-        apiKey:key,
-      }, 
-    }
+}
+
+export async function getStaticProps() {
+  const key = process.env.OPENWEATHER_API_KEY
+  return {
+    props: {
+      apiKey:key,
+    }, 
   }
-  
 }
 
 export default HomePage
