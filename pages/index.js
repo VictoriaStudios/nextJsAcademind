@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react'
 import Weather from "../components/Weather"
-import { apiKey } from '../utils/apiKey'
+//import { apiKey } from '../utils/apiKey'
 import Head from 'next/head'
 
 
 
-function HomePage() {
+function HomePage(props) {
   
   let pos = null
   const now = Date.now()
@@ -100,7 +100,7 @@ function HomePage() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setPosition)
         function setPosition (pos) {
-          fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${apiKey}`)
+          fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&exclude=minutely,hourly&appid=${props.apiKey}`)
           .then ((response) => {
             response.json().then ((data) =>  {
               setWeatherData(data)
@@ -157,6 +157,16 @@ function HomePage() {
       <Weather weatherData={weatherData} locationData={locationData} landscape={landscape} height400={height400}/>
     </>
   )
+
+  export async function getStaticProps() {
+    const key = process.env.OPENWEATHER_API_KEY
+    return {
+      props: {
+        apiKey:key,
+      }, 
+    }
+  }
+  
 }
 
 export default HomePage
